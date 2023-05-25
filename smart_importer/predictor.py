@@ -232,6 +232,10 @@ class EntryPredictor(ImporterHook):
                 logger.debug("Apply predictions without pipeline")
             elif self.pipeline:
                 predictions = self.pipeline.predict(transactions)
+                for prediction in predictions:
+                    logger.debug(prediction)
+                for transaction in transactions:
+                    logger.debug(transaction)
                 transactions = [
                     self.apply_prediction(entry, prediction)
                     for entry, prediction in zip(transactions, predictions)

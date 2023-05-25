@@ -1,8 +1,12 @@
 """Smart importer for Beancount and Fava."""
+
+import logging
+
 from smart_importer.entries import update_postings
 from smart_importer.hooks import apply_hooks  # noqa
 from smart_importer.predictor import EntryPredictor
 
+logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 class PredictPayees(EntryPredictor):
     """Predicts payees."""
